@@ -26,6 +26,27 @@ const config = {
       : path.resolve(__dirname, "rspack-dist"),
     filename: "[name].js",
   },
+  module: {
+    rules: [
+      {
+        test: /\.(scss|css)$/,
+        rules: [
+          {
+            test: /\.scss$/,
+            use: 'sass-loader',
+          },
+        ],
+        use: [
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+          },
+        ],
+      },
+    ],
+  },
   experiments: {
     css: true,
   },
